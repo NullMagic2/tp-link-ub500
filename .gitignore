@@ -1,0 +1,10 @@
+/target/
+/bin/
+/work/
+/outputs/
+**/target/
+**/__pycache__/
+*.pyc
+/magic-usb/bin/
+/magic-usb/work/
+/magic-usb/outputs/

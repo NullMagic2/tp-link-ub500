@@ -1,0 +1,38 @@
+# Module: magic_usb.service
+# Purpose: Relay one explicitly selected Bluetooth adapter.
+# Created: 2026-10-13
+# Architecture: Rust USB transport exposes VHCI; BlueZ retains pairing/profiles.
+[Unit]
+Description=Magic USB Rust Bluetooth transport on %i
+Requires=bluetooth.service
+After=bluetooth.service
+Conflicts=csr8510@%i.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStartPre=/usr/sbin/modprobe hci_vhci
+ExecStartPre=/usr/bin/magic-usb restore %i
+Environment=MAGIC_USB_SERVICE=1
+RuntimeDirectory=magic-usb-%i
+RuntimeDirectoryMode=0700
+RuntimeDirectoryPreserve=yes
+ExecStart=/usr/bin/magic-usb serve %i --wait-for-device
+ExecStopPost=/usr/bin/magic-usb restore %i
+Restart=on-failure
+RestartSec=3
+RestartSteps=4
+RestartMaxDelaySec=30
+TimeoutStopSec=60
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=-/sys/bus/usb/drivers/btusb
+RestrictAddressFamilies=AF_UNIX AF_NETLINK
+RestrictRealtime=yes
+LockPersonality=yes
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

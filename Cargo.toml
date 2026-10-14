@@ -1,0 +1,14 @@
+# Module: magic_usb.package
+# Purpose: Build the shared Rust USB library and service.
+# Created: 2026-10-13
+# Architecture: Existing libusb runtime and Linux VHCI, no kernel changes.
+[package]
+name = "magic-usb"
+version = "0.1.2"
+edition = "2024"
+rust-version = "1.85"
+license = "GPL-2.0-only"
+[workspace]
+members = ["clients/csr8510"]
+[profile.release]
+strip = true
