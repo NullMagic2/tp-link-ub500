@@ -65,39 +65,12 @@ Protocol behavior:
 - Capture is off. --capture=NEW-FILE creates a private, exclusive btsnoop file
   and stops recording at 16 MiB. Raw captures may contain pairing keys.
 
-Verification on 13 October 2026, Ubuntu 26.04.1 / kernel 7.0.0-38:
-44 Rust tests passed, including firmware bounds, descriptor validation, framing,
-partial USB acquisition, disconnect/reopen, callback drain and driver cleanup.
-Both release clients build offline against runtime libraries. A 35-second
-physical UB 500 run registered VHCI, initialized BlueZ, powered the controller,
-and supported discovery. Both USB interfaces returned to btusb on normal exit.
-The installed system service also started successfully; its stop/start and
-restoration were verified. The parser validated the distro firmware/config for
-ROM version 1 and produced the expected 30,210-byte payload.
-The iPhone's USB Internet connection was independently verified with bound and
-ordinary HTTPS requests returning HTTP 200 before the hotspot was disabled.
-
-Limits: cold ROM firmware upload, physical CSR use through this extracted library,
-headset voice, real endpoint stalls, suspend/resume, forced-kill cleanup and
-Bluetooth hotspot Internet need hardware validation. Existing parser/lifecycle
-tests do not prove those behaviors. Hotspot was disabled at the user's request;
-no Bluetooth Internet claim is made. clippy is unavailable in the local toolchain.
-
 Source references:
 https://github.com/torvalds/linux/blob/v7.0/drivers/bluetooth/btrtl.c
 https://github.com/torvalds/linux/blob/v7.0/drivers/bluetooth/hci_vhci.c
 https://libusb.sourceforge.io/api-1.0/group__libusb__syncio.html
 Core transport and tests are adapted from the user's CSR8510 1.0.0 project.
 License: MIT; COPYING contains the license text.
-
-0.1.1 ownership validation:
-Normal stop and forced process exit restore only interfaces previously bound to
-btusb. Starting with both interfaces unbound, normal stop and forced exit leave
-them unbound. All four physical UB 500 cases passed; the BlueZ daemon PID stayed
-unchanged. An interrupted firmware startup in the forced-exit stress check left
-the controller unresponsive. A reset of this USB device recovered it; the service
-was then restarted and the powered controller verified. Cold firmware loading
-and automatic recovery of interrupted loading remain experimental.
 
 Packaging integration:
 This folder is a component of Magic Hotspot. Its build.sh builds the transport

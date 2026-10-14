@@ -24,8 +24,7 @@ transport, not the earlier experimental UB500 kernel module.
 
 ## Build
 
-Requires Rust with edition 2024 support (tested with the installed stable
-toolchain), Cargo, a C linker, libusb 1.0 and libzstd runtimes.
+Requires Rust with edition 2024 support, Cargo, a C linker, libusb 1.0 and libzstd runtimes.
 
 ```sh
 ./build.sh
@@ -56,20 +55,9 @@ Starting takes ownership of that adapter; stopping restores its prior `btusb`
 bindings when possible. Existing connections end when an adapter is removed or
 ownership changes. Do not run two clients against the same adapter.
 
-## Validation and limits
-
-46 shared transport tests passed. Physical CSR initialization and a live
-CSR-to-UB500 swap were verified on Ubuntu 26.04.1, kernel 7.0.0-38-generic.
-Bluetooth PAN traffic was previously verified with UB500.
-
-A separate OBEX simulation passed six transfers through BlueZ and virtual
-controllers. It bypasses this USB relay and does not establish physical
-file-transfer reliability. Audio interoperability, every UB500 revision and
-other distro/kernel combinations are not fully validated.
-
 ## License
 
 The shared driver and CSR client are **MIT** licensed;
 see [COPYING](COPYING). Distro firmware is not bundled in this repository.
 
-Standalone `.deb` packages are available for Ubuntu, Debian and Linux Mint. See [PACKAGING.md](PACKAGING.md) for build targets and validation limits.
+Standalone `.deb` packages are available for Ubuntu, Debian and Linux Mint. See [PACKAGING.md](PACKAGING.md) for supported distributions and package details.
