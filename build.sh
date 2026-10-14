@@ -11,3 +11,4 @@ cargo build --release --workspace --locked --offline
 mkdir -p bin
 install -m 0755 target/release/magic-usb bin/magic-usb
 install -m 0755 target/release/csr8510 bin/csr8510
+install -m 0755 target/release/tp-link-ub500 bin/tp-link-ub500

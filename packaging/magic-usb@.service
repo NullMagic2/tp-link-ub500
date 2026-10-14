@@ -6,7 +6,7 @@
 Description=Magic USB Rust Bluetooth transport on %i
 Requires=bluetooth.service
 After=bluetooth.service
-Conflicts=csr8510@%i.service
+Conflicts=csr8510@%i.service tp-link-ub500@%i.service
 StartLimitIntervalSec=0
 
 [Service]

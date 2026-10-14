@@ -4,11 +4,11 @@
 # Architecture: Existing libusb runtime and Linux VHCI, no kernel changes.
 [package]
 name = "magic-usb"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2024"
 rust-version = "1.85"
-license = "GPL-2.0-only"
+license = "MIT"
 [workspace]
-members = ["clients/csr8510"]
+members = ["clients/csr8510", "clients/ub500"]
 [profile.release]
 strip = true

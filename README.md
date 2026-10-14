@@ -3,7 +3,7 @@
 Rust userspace Bluetooth transport for TP-Link UB500 (`2357:0604`), using libusb and Linux VHCI.
 BlueZ continues to handle pairing, Bluetooth profiles and networking.
 
-**Current release: 0.1.2**, using the shared `magic-usb` 0.1.2 transport.
+**Current release: 0.1.3**, using the shared `magic-usb` 0.1.3 transport.
 This repository includes the complete shared library and CSR client workspace,
 so it builds without checking out another repository. The shared transport is
 also included in [Magic Hotspot](https://github.com/NullMagic2/magic-hotspot).
@@ -38,7 +38,7 @@ Source builds are offline and locked. See [operating notes](README.txt).
 
 ## Use
 
-For normal installation, use the integrated Ubuntu 26.04 amd64 package from
+For integrated installation, use the distro-matching package from
 [Magic Hotspot releases](https://github.com/NullMagic2/magic-hotspot/releases).
 It includes both clients and `magic-usb@.service`.
 
@@ -69,5 +69,7 @@ other distro/kernel combinations are not fully validated.
 
 ## License
 
-The shared driver and CSR client retain their existing **GPL-2.0-only** license;
+The shared driver and CSR client are **MIT** licensed;
 see [COPYING](COPYING). Distro firmware is not bundled in this repository.
+
+Standalone `.deb` packages are available for Ubuntu, Debian and Linux Mint. See [PACKAGING.md](PACKAGING.md) for build targets and validation limits.

@@ -1,4 +1,4 @@
-Magic USB 0.1.2 — bundled in Magic Hotspot 0.2.23
+Magic USB 0.1.3 — bundled in Magic Hotspot 0.2.24
 
 Shared Rust userspace USB transport for TP-Link UB 500 (2357:0604) and
 CSR8510 (0a12:0001). magic-usb and clients/csr8510 use the same Rust library;
@@ -30,7 +30,7 @@ Build and run:
 
 Install the parent Magic Hotspot package and explicitly select a port:
   cd ..
-  sudo apt install ./outputs/magic-hotspot_0.2.23-1ubuntu26.04_amd64.deb
+  sudo apt install ./outputs/magic-hotspot_0.2.24-1ubuntu26.04_amd64.deb
   sudo systemctl start magic-usb@1-4.service
   systemctl status magic-usb@1-4.service
   sudo systemctl stop magic-usb@1-4.service
@@ -88,7 +88,7 @@ https://github.com/torvalds/linux/blob/v7.0/drivers/bluetooth/btrtl.c
 https://github.com/torvalds/linux/blob/v7.0/drivers/bluetooth/hci_vhci.c
 https://libusb.sourceforge.io/api-1.0/group__libusb__syncio.html
 Core transport and tests are adapted from the user's CSR8510 1.0.0 project.
-License: GPL-2.0-only; COPYING contains the license text.
+License: MIT; COPYING contains the license text.
 
 0.1.1 ownership validation:
 Normal stop and forced process exit restore only interfaces previously bound to

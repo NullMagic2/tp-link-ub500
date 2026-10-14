@@ -1,0 +1,7 @@
+[package]
+name = "tp-link-ub500"
+version = "0.1.3"
+edition = "2024"
+license = "MIT"
+[dependencies]
+magic-usb = { path = "../.." }
