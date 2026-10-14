@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o /tmp/rustup-init.sh
-          sh /tmp/rustup-init.sh -y --profile minimal --default-toolchain 1.93.1
+          sh /tmp/rustup-init.sh -y --profile minimal --default-toolchain 1.93.1 --component rustfmt
           echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
       - name: Build and test
         shell: bash
